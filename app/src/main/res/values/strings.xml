@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">AirbankApplication</string>
+
+    <!-- ERRORS -->
+    <string name="error_connection">Connection was lost</string>
+    <string name="error_default">Something is wrong, please contact us info@airbank.cz</string>
+
+    <!-- TRANSACTIONS -->
+    <string name="transactions_title">List</string>
+    <string name="transactions_spinner">Filter</string>
+
+    <!-- TRANSACTION DETAIL -->
+
 </resources>

@@ -1,31 +1,97 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+final VERSION_MAJOR = 1 // max two digits
+final VERSION_MINOR = 0 // max two digits
+final VERSION_PATCH = 0 // max two digits
 
 android {
     compileSdkVersion 27
+    buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "cz.airbank.airbankapplication"
-        minSdkVersion 27
+        minSdkVersion 27 // TODO change to 19
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode VERSION_MAJOR * 100000 + VERSION_MINOR * 1000 + VERSION_PATCH
+        versionName "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    dataBinding {
+        enabled = true
+    }
+
     buildTypes {
+        debug {
+            buildConfigField "String", "URL", '"http://demo0569565.mockable.io/"'
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
+
         release {
+            buildConfigField "String", "URL", '"http://demo0569565.mockable.io/"' // TODO production URL
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // TODO signingConfig
         }
     }
 }
 
+ext {
+    supportLibVersion = '27.1.1'
+    archVersion = '1.1.1'
+    daggerVersion = '2.15'
+    retrofitVersion = '2.4.0'
+    okHttpsVersion = '3.10.0'
+    stethoVersion = '1.5.0'
+    epoxyVersion = '2.18.0'
+    rxAndroid = '2.0.2'
+    rxJava = '2.1.13'
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    kapt "com.android.databinding:compiler:$gradle_plugin_version"
+
+    // Android support libraries
+    implementation "com.android.support:appcompat-v7:$supportLibVersion"
+    implementation "com.android.support:recyclerview-v7:${supportLibVersion}"
+    implementation "com.android.support:design:${supportLibVersion}"
+    implementation "com.android.support:cardview-v7:${supportLibVersion}"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+
+    // Architecture Components
+    implementation "android.arch.lifecycle:extensions:${archVersion}"
+    implementation "android.arch.lifecycle:common-java8:${archVersion}"
+
+    // Dagger2
+    implementation "com.google.dagger:dagger:${daggerVersion}"
+    implementation "com.google.dagger:dagger-android:${daggerVersion}"
+    implementation "com.google.dagger:dagger-android-support:${daggerVersion}"
+    kapt "com.google.dagger:dagger-compiler:${daggerVersion}"
+    kapt "com.google.dagger:dagger-android-processor:${daggerVersion}"
+
+    // Networking
+    implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${okHttpsVersion}"
+    implementation "com.squareup.okhttp3:okhttp:${okHttpsVersion}"
+    implementation "com.facebook.stetho:stetho-okhttp3:${stethoVersion}"
+    debugImplementation "com.facebook.stetho:stetho:${stethoVersion}"
+
+    // RxJava2
+    implementation "io.reactivex.rxjava2:rxjava:${rxJava}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rxAndroid}"
+
+    // Other libraries
+    implementation "com.airbnb.android:epoxy:$epoxyVersion"
+    annotationProcessor "com.airbnb.android:epoxy-processor:$epoxyVersion"
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
