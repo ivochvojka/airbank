@@ -7,11 +7,11 @@
 
         <variable
             name="data"
-            type="cz.airbank.airbankapplication.ui.transaction.TransactionsView"/>
+            type="cz.airbank.airbankapplication.ui.transaction.TransactionListView"/>
 
         <variable
             name="viewModel"
-            type="cz.airbank.airbankapplication.arch.viewmodel.TransactionsViewModel"/>
+            type="cz.airbank.airbankapplication.arch.viewmodel.TransactionListViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

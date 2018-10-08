@@ -5,5 +5,5 @@ package cz.airbank.airbankapplication.ui.transaction
  *
  * @author Ivo Chvojka
  */
-interface TransactionsView {
+interface TransactionListView {
 }

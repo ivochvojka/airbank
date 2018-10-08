@@ -2,8 +2,8 @@ package cz.airbank.airbankapplication.di
 
 import cz.airbank.airbankapplication.ui.transaction.TransactionDetailActivity
 import cz.airbank.airbankapplication.ui.transaction.TransactionDetailFragment
-import cz.airbank.airbankapplication.ui.transaction.TransactionsActivity
-import cz.airbank.airbankapplication.ui.transaction.TransactionsFragment
+import cz.airbank.airbankapplication.ui.transaction.TransactionListActivity
+import cz.airbank.airbankapplication.ui.transaction.TransactionListFragment
 import dagger.Module
 import dagger.android.AndroidInjectionModule
 import dagger.android.ContributesAndroidInjector
@@ -18,13 +18,13 @@ import dagger.android.ContributesAndroidInjector
 abstract class BuildersModule {
 
     @ContributesAndroidInjector
-    abstract fun bindTransactionsActivity(): TransactionsActivity
+    abstract fun bindTransactionsActivity(): TransactionListActivity
 
     @ContributesAndroidInjector
     abstract fun bindTransactionDetailActivity(): TransactionDetailActivity
 
     @ContributesAndroidInjector
-    abstract fun bindTransactionsFragment(): TransactionsFragment
+    abstract fun bindTransactionsFragment(): TransactionListFragment
 
     @ContributesAndroidInjector
     abstract fun bindTransactionDetailFragment(): TransactionDetailFragment

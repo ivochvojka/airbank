@@ -28,12 +28,12 @@ fun View.createSnack(@StringRes stringResId: Int, duration: Int = Snackbar.LENGT
 }
 
 @BindingAdapter("amountInAccountCurrency")
-fun TextView.setAmountInAccountCurrency(amountInAccountCurrency: Long) {
+fun TextView.setAmountInAccountCurrency(amountInAccountCurrency: Long?) {
     text = "${amountInAccountCurrency} " + context.getString(R.string.account_currency)
 }
 
 @BindingAdapter("direction")
-fun ImageView.setDirection(direction: Direction) {
+fun ImageView.setDirection(direction: Direction?) {
     if (direction == Direction.INCOMING) {
         setImageResource(R.drawable.ic_arrow_incomming)
     } else {

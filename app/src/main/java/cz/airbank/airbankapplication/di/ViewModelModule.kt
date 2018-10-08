@@ -2,7 +2,7 @@ package cz.airbank.airbankapplication.di
 
 import android.arch.lifecycle.ViewModel
 import cz.airbank.airbankapplication.arch.viewmodel.TransactionDetailViewModel
-import cz.airbank.airbankapplication.arch.viewmodel.TransactionsViewModel
+import cz.airbank.airbankapplication.arch.viewmodel.TransactionListViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -18,8 +18,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(TransactionsViewModel::class)
-    abstract fun bindTransitionsViewModel(viewModel: TransactionsViewModel): ViewModel
+    @ViewModelKey(TransactionListViewModel::class)
+    abstract fun bindTransitionsViewModel(viewModel: TransactionListViewModel): ViewModel
 
     @Binds
     @IntoMap

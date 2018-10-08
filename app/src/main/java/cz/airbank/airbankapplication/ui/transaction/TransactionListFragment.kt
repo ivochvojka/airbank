@@ -2,15 +2,16 @@ package cz.airbank.airbankapplication.ui.transaction
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import com.emu.android.ui.ViewModelBaseFragment
+import cz.airbank.airbankapplication.ui.ViewModelBaseFragment
 import com.jakewharton.rxbinding2.widget.RxAdapterView
 import cz.airbank.airbankapplication.R
-import cz.airbank.airbankapplication.arch.viewmodel.TransactionsViewModel
+import cz.airbank.airbankapplication.arch.viewmodel.TransactionListViewModel
 import cz.airbank.airbankapplication.databinding.FragmentTransactionsBinding
 import cz.airbank.airbankapplication.model.Direction
 import cz.airbank.airbankapplication.model.Transaction
@@ -24,12 +25,12 @@ import kotlinx.android.synthetic.main.fragment_transactions.view.*
  *
  * @author Ivo Chvojka
  */
-class TransactionsFragment : ViewModelBaseFragment<TransactionsViewModel, FragmentTransactionsBinding>(),
-        TransactionsView {
+class TransactionListFragment : ViewModelBaseFragment<TransactionListViewModel, FragmentTransactionsBinding>(),
+        TransactionListView {
 
-    private lateinit var recyclerAdapter: TransactionsAdapter
+    private lateinit var recyclerAdapter: TransactionListAdapter
 
-    override val viewModelClazz: Class<TransactionsViewModel> = TransactionsViewModel::class.java
+    override val viewModelClazz: Class<TransactionListViewModel> = TransactionListViewModel::class.java
 
     override fun inflateBinding(inflater: LayoutInflater): FragmentTransactionsBinding =
             FragmentTransactionsBinding.inflate(inflater)
@@ -45,18 +46,23 @@ class TransactionsFragment : ViewModelBaseFragment<TransactionsViewModel, Fragme
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // filter
+        // filter Spinner
         binding.root.spinner_filter.adapter = ArrayAdapter<Direction>(context, R.layout.item_filter, Direction.values())
         RxAdapterView.itemSelections(binding.root.spinner_filter)
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe { position -> viewModel.getTransactions(Direction.values()[position]) }
 
-        // transactions
-        recyclerAdapter = TransactionsAdapter(viewModel)
-        val recyclerView = binding.root.recycler_transactions;
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        recyclerView.adapter = recyclerAdapter
+        // transactions RecyclerView
+        recyclerAdapter = TransactionListAdapter(viewModel)
+        with(binding.root.recycler_transactions) {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL).apply {
+                setDrawable(ContextCompat.getDrawable(context!!, R.drawable.divider_transactions)!!)
+            }
+            addItemDecoration(divider)
+            adapter = recyclerAdapter
+        }
     }
 
     private fun onTransactionClick(transaction: Transaction) {

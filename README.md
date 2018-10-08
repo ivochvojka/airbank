@@ -1,6 +1,7 @@
 # Test project for Airbank
 
-## TODO
+### TODO
+- signing config for release version
 - use DB for offline mode (e.g. Room)
 - add Espresso tests
 - add Crashlytics, maybe some Analytics and another tools...

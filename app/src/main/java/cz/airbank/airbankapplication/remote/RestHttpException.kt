@@ -12,7 +12,6 @@ import retrofit2.Response
 class RestHttpException(response: Response<*>) : HttpException(response) {
     var responseError: Error = parseError()
 
-
     private fun parseError(): Error {
         val gson = GsonBuilder().create()
         val body = response().errorBody()?.string() ?: return Error()

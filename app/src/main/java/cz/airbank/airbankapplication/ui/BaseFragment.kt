@@ -1,4 +1,4 @@
-package com.emu.android.ui
+package cz.airbank.airbankapplication.ui
 
 import android.databinding.ViewDataBinding
 import android.os.Bundle

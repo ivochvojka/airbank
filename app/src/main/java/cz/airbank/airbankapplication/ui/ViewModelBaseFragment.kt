@@ -1,4 +1,4 @@
-package com.emu.android.ui
+package cz.airbank.airbankapplication.ui
 
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context

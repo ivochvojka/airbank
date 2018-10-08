@@ -21,60 +21,70 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.constraint.ConstraintLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="@{viewModel.progressVisibility ? View.GONE : View.VISIBLE}">
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/space_xsmall"
+            app:cardElevation="@dimen/space_xsmall">
 
-            <!-- DIRECTION -->
-            <ImageView
-                android:id="@+id/img_arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/space_small"
-                android:background="@drawable/shape_direction"
-                app:layout_constraintBottom_toBottomOf="@+id/layout_transaction"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/layout_transaction"
-                bind:direction="@{viewModel.transaction.direction}"
-                tools:src="@drawable/ic_arrow_incomming"/>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/space_medium"
+                android:visibility="@{viewModel.progressVisibility ? View.GONE : View.VISIBLE}">
 
-            <!-- TRANSACTION VALUES -->
-            <include
-                android:id="@+id/layout_transaction"
-                layout="@layout/layout_transaction"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_small"
-                app:layout_constraintStart_toEndOf="@id/img_arrow"
-                app:layout_constraintTop_toTopOf="parent"
-                app:transaction="@{viewModel.transaction}"/>
+                <!-- DIRECTION -->
+                <ImageView
+                    android:id="@+id/img_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/space_small"
+                    android:background="@drawable/shape_direction"
+                    app:layout_constraintBottom_toBottomOf="@+id/layout_transaction"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/layout_transaction"
+                    bind:direction="@{viewModel.transaction.direction}"
+                    tools:src="@drawable/ic_arrow_incomming"/>
 
-            <!-- SEPARATOR -->
-            <View
-                android:id="@+id/view_separator"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginStart="@dimen/space_small"
-                android:background="@color/separator"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/img_arrow"
-                app:layout_constraintTop_toBottomOf="@id/layout_transaction"
-                android:layout_marginEnd="@dimen/space_small"
-                />
+                <!-- TRANSACTION VALUES -->
+                <include
+                    android:id="@+id/layout_transaction"
+                    layout="@layout/layout_transaction"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_small"
+                    app:layout_constraintStart_toEndOf="@id/img_arrow"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:transaction="@{viewModel.transaction}"/>
 
-            <!-- TRANSACTION DETAIL VALUES -->
-            <include
-                android:id="@+id/layout_transaction_detail"
-                layout="@layout/layout_transaction_detail"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/view_separator"
-                app:layout_constraintTop_toBottomOf="@id/view_separator"
-                app:layout_constraintEnd_toEndOf="@id/view_separator"
-                app:detail="@{viewModel.transactionDetail}"/>
+                <!-- SEPARATOR -->
+                <View
+                    android:id="@+id/view_separator"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="@dimen/space_small"
+                    android:layout_marginTop="@dimen/space_xsmall"
+                    android:layout_marginEnd="@dimen/space_small"
+                    android:background="@color/separator"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/img_arrow"
+                    app:layout_constraintTop_toBottomOf="@id/layout_transaction"
+                    />
 
-        </android.support.constraint.ConstraintLayout>
+                <!-- TRANSACTION DETAIL VALUES -->
+                <include
+                    android:id="@+id/layout_transaction_detail"
+                    layout="@layout/layout_transaction_detail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xsmall"
+                    app:detail="@{viewModel.transactionDetail}"
+                    app:layout_constraintEnd_toEndOf="@id/view_separator"
+                    app:layout_constraintStart_toStartOf="@id/view_separator"
+                    app:layout_constraintTop_toBottomOf="@id/view_separator"/>
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.CardView>
 
         <ProgressBar
             android:id="@+id/progress"

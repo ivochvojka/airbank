@@ -2,7 +2,6 @@ package cz.airbank.airbankapplication.arch.viewmodel
 
 import android.app.Application
 import android.arch.lifecycle.*
-import android.content.Context
 import android.support.annotation.StringRes
 import cz.airbank.airbankapplication.R
 import cz.airbank.airbankapplication.arch.event.SnackbarLiveEvent
@@ -22,8 +21,6 @@ abstract class BaseViewModel(app: Application) : AndroidViewModel(app), Lifecycl
     private val snackEvent by lazy { SnackbarLiveEvent() }
 
     protected val manager by lazy { RxManager() }
-    protected val applicationContext: Context
-        get() = getApplication()
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     open fun onCreate() {

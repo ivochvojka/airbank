@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.transaction.TransactionsActivity"
+    tools:context=".ui.transaction.TransactionListActivity"
     >
 
     <data>
@@ -17,9 +17,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- ACCOUNT NUMBER LABEL -->
+        <!-- ACCOUNT NUMBER -->
         <TextView
             android:id="@+id/txt_account_number_label"
+            style="@style/Text.Middle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/transaction_detail_account_number"
@@ -27,20 +28,22 @@
             app:layout_constraintTop_toTopOf="parent"
             />
 
-        <!-- ACCOUNT NUMBER VALUE -->
         <TextView
             android:id="@+id/txt_account_number_value"
+            style="@style/Text.Middle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{detail.accountNumber}"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="some text"
             />
 
-        <!-- ACCOUNT NAME LABEL -->
+        <!-- ACCOUNT NAME -->
         <TextView
             android:id="@+id/txt_account_name_label"
+            style="@style/Text.Middle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/transaction_detail_account_name"
@@ -48,33 +51,36 @@
             app:layout_constraintTop_toBottomOf="@id/txt_account_number_label"
             />
 
-        <!-- ACCOUNT NAME VALUE -->
         <TextView
             android:id="@+id/txt_account_name_value"
+            style="@style/Text.Middle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{detail.accountName}"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/txt_account_name_label"
             tools:text="some text"
             />
 
-        <!-- BANK CODE LABEL -->
+        <!-- BANK CODE -->
         <TextView
             android:id="@+id/txt_bank_code_label"
+            style="@style/Text.Middle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/transaction_detail_bank_code"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_account_name_label"
             />
-
         <!-- BANK CODE VALUE -->
         <TextView
             android:id="@+id/txt_bank_code_value"
+            style="@style/Text.Middle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{detail.bankCode}"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/txt_bank_code_label"
             tools:text="some text"

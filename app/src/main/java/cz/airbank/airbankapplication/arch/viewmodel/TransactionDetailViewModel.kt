@@ -5,7 +5,6 @@ import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
 import cz.airbank.airbankapplication.model.Transaction
 import cz.airbank.airbankapplication.model.TransactionDetail
-import cz.airbank.airbankapplication.model.TransactionDetailWrapper
 import cz.airbank.airbankapplication.repository.TransactionRepository
 import javax.inject.Inject
 
@@ -22,13 +21,16 @@ class TransactionDetailViewModel @Inject constructor(app: Application, private v
     val transactionDetail = ObservableField<TransactionDetail>()
 
     fun loadTransactionDetail(transaction: Transaction) {
-        this.transaction.set(transaction)
-        progressVisibility.set(true)
-        with(manager) {
-            add(setupSingle(repo.getTransitionDetail(transaction.id), "TransitionDetail")
-                    .doFinally { progressVisibility.set(false) }
-                    .subscribe({ transactionDetail.set(it) }, { handleError(it) })
-            )
+        if (transactionDetail.get() == null) {
+            this.transaction.set(transaction)
+            progressVisibility.set(true)
+            with(manager) {
+                if (isRunning("TransitionDetail")) return
+                add(setupSingle(repo.getTransitionDetail(transaction.id), "TransitionDetail")
+                        .doFinally { progressVisibility.set(false) }
+                        .subscribe({ transactionDetail.set(it) }, { handleError(it) })
+                )
+            }
         }
     }
 

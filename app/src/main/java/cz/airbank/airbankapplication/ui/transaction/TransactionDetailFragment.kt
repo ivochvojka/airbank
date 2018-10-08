@@ -3,11 +3,9 @@ package cz.airbank.airbankapplication.ui.transaction
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import com.emu.android.ui.ViewModelBaseFragment
+import cz.airbank.airbankapplication.ui.ViewModelBaseFragment
 import cz.airbank.airbankapplication.arch.viewmodel.TransactionDetailViewModel
-import cz.airbank.airbankapplication.arch.viewmodel.TransactionsViewModel
 import cz.airbank.airbankapplication.databinding.FragmentTransactionDetailBinding
-import cz.airbank.airbankapplication.databinding.FragmentTransactionsBinding
 import cz.airbank.airbankapplication.model.Transaction
 import cz.airbank.airbankapplication.utils.showSnack
 

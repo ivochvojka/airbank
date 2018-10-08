@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Airbank.Light">
 
-        <activity android:name=".ui.transaction.TransactionsActivity">
+        <activity android:name=".ui.transaction.TransactionListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

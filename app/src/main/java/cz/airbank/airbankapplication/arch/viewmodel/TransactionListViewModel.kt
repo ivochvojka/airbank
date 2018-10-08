@@ -15,7 +15,7 @@ import javax.inject.Inject
  *
  * @author Ivo Chvojka
  */
-class TransactionsViewModel @Inject constructor(app: Application, private val repo: TransactionRepository)
+class TransactionListViewModel @Inject constructor(app: Application, private val repo: TransactionRepository)
     : BaseViewModel(app) {
 
     val progressVisibility = ObservableBoolean()
@@ -26,11 +26,13 @@ class TransactionsViewModel @Inject constructor(app: Application, private val re
     fun getTransactions(direction: Direction) {
         if (transactions.isEmpty()) {
             with(manager) {
+                if (isRunning("Transactions")) return
                 add(setupSingle(repo.getTransactions(), "Transactions")
                         .doOnSubscribe { progressVisibility.set(true) }
                         .doFinally({ progressVisibility.set(false) })
                         .subscribe({
                             it.items?.let {
+                                transactions.clear()
                                 transactions.addAll(it);
                                 transactionsEvent.value = filterTransactions(it, direction)
                             }

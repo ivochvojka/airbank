@@ -1,8 +1,8 @@
 package cz.airbank.airbankapplication.ui.transaction
 
 import android.os.Bundle
-import com.emu.android.ui.BaseActivity
 import cz.airbank.airbankapplication.R
+import cz.airbank.airbankapplication.ui.BaseActivity
 
 /**
  * Activity for transaction detail.

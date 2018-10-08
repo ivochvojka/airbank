@@ -1,7 +1,7 @@
 package cz.airbank.airbankapplication.ui.transaction
 
 import cz.airbank.airbankapplication.R
-import cz.airbank.airbankapplication.arch.viewmodel.TransactionsViewModel
+import cz.airbank.airbankapplication.arch.viewmodel.TransactionListViewModel
 import cz.airbank.airbankapplication.model.Transaction
 import cz.airbank.airbankapplication.ui.BaseRecyclerAdapter
 
@@ -10,7 +10,7 @@ import cz.airbank.airbankapplication.ui.BaseRecyclerAdapter
  *
  * @author Ivo Chvojka
  */
-class TransactionsAdapter(viewModel: TransactionsViewModel) : BaseRecyclerAdapter<Transaction>(viewModel) {
+class TransactionListAdapter(viewModel: TransactionListViewModel) : BaseRecyclerAdapter<Transaction>(viewModel) {
 
     override fun getLayoutIdForPosition(position: Int) = R.layout.item_transaction
 }
