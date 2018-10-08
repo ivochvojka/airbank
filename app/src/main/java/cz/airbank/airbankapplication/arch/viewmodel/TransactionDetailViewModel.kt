@@ -5,6 +5,7 @@ import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
 import cz.airbank.airbankapplication.model.Transaction
 import cz.airbank.airbankapplication.model.TransactionDetail
+import cz.airbank.airbankapplication.model.TransactionDetailWrapper
 import cz.airbank.airbankapplication.repository.TransactionRepository
 import javax.inject.Inject
 

@@ -1,6 +1,6 @@
 package cz.airbank.airbankapplication.remote
 
-import cz.airbank.airbankapplication.model.TransactionDetail
+import cz.airbank.airbankapplication.model.TransactionDetailWrapper
 import cz.airbank.airbankapplication.model.Transactions
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -18,6 +18,6 @@ interface RemoteService {
     fun getTransactions(): Single<Transactions>
 
     @GET("transactions/{transactionId}")
-    fun getTransactionDetail(@Path("transactionId") transactionId: Long): Single<TransactionDetail>
+    fun getTransactionDetail(@Path("transactionId") transactionId: Long): Single<TransactionDetailWrapper>
 
 }

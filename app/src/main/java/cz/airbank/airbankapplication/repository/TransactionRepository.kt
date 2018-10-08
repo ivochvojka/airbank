@@ -1,6 +1,7 @@
 package cz.airbank.airbankapplication.repository
 
 import cz.airbank.airbankapplication.model.TransactionDetail
+import cz.airbank.airbankapplication.model.TransactionDetailWrapper
 import cz.airbank.airbankapplication.model.Transactions
 import cz.airbank.airbankapplication.remote.RemoteService
 import io.reactivex.Single
@@ -22,6 +23,7 @@ class TransactionRepository @Inject constructor(private val service: RemoteServi
 
     fun getTransitionDetail(transactionId: Long): Single<TransactionDetail> {
         return service.getTransactionDetail(transactionId)
+                .map { it.contraAccount }
                 .compose(applySingleSchedulers())
     }
 
