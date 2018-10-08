@@ -1,10 +1,9 @@
 package cz.airbank.airbankapplication.remote
 
-import cz.airbank.airbankapplication.model.Transaction
 import cz.airbank.airbankapplication.model.TransactionDetail
-import io.reactivex.Flowable
+import cz.airbank.airbankapplication.model.Transactions
 import io.reactivex.Single
-import retrofit2.http.POST
+import retrofit2.http.GET
 import retrofit2.http.Path
 
 /**
@@ -15,10 +14,10 @@ import retrofit2.http.Path
 
 interface RemoteService {
 
-    @POST("transactions")
-    fun getTransactions(): Flowable<List<Transaction>>
+    @GET("transactions")
+    fun getTransactions(): Single<Transactions>
 
-    @POST("transactions/{transactionId}")
+    @GET("transactions/{transactionId}")
     fun getTransactionDetail(@Path("transactionId") transactionId: Long): Single<TransactionDetail>
 
 }

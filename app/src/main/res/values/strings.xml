@@ -1,14 +1,26 @@
 <resources>
     <string name="app_name">AirbankApplication</string>
 
+    <!-- COMMON -->
+    <string name="account_currency">Kč</string>
+
     <!-- ERRORS -->
     <string name="error_connection">Connection was lost</string>
     <string name="error_default">Something is wrong, please contact us info@airbank.cz</string>
+
+    <!-- TRANSACTION_TYPES -->
+    <string name="transaction_type_all">Filter</string>
+    <string name="transaction_type_incomming">Incomming</string>
+    <string name="transaction_type_outgoing">Outgoing</string>
 
     <!-- TRANSACTIONS -->
     <string name="transactions_title">List</string>
     <string name="transactions_spinner">Filter</string>
 
     <!-- TRANSACTION DETAIL -->
+    <string name="transaction_detail_title">Detail</string>
+    <string name="transaction_detail_account_number">accountNumber</string>
+    <string name="transaction_detail_account_name">accountName</string>
+    <string name="transaction_detail_bank_code">bankCode</string>
 
 </resources>

@@ -1,9 +1,9 @@
 package cz.airbank.airbankapplication.ui.transaction
 
 /**
- * View for transaction list.
+ * View for transaction detail.
  *
  * @author Ivo Chvojka
  */
-interface TransactionsView {
+interface TransactionDetailView {
 }

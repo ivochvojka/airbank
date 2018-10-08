@@ -1,8 +1,11 @@
 package com.emu.android.ui
 
 import android.os.Bundle
+import android.support.annotation.StringRes
 import android.support.v4.app.Fragment
+import android.support.v7.widget.Toolbar
 import android.view.MenuItem
+import android.widget.TextView
 import cz.airbank.airbankapplication.R
 import dagger.android.support.DaggerAppCompatActivity
 
@@ -34,6 +37,18 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
         if (current == null) {
             manager.beginTransaction().replace(R.id.container, fragment).commit()
         }
+    }
+
+    protected open fun setupActionBar(@StringRes titleResId: Int, displayHomeAsUpEnabled: Boolean) {
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        toolbar?.let {
+            setSupportActionBar(it)
+            supportActionBar?.run {
+                setDisplayHomeAsUpEnabled(displayHomeAsUpEnabled)
+                setDisplayShowTitleEnabled(false)
+            }
+        }
+        findViewById<TextView>(R.id.txt_toolbar_title).text = getString(titleResId)
     }
 
 }

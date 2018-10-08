@@ -45,7 +45,7 @@ class RemoteModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(interceptor: Interceptor, authenticator: Authenticator): OkHttpClient {
+    fun provideOkHttpClient(interceptor: Interceptor): OkHttpClient {
         return if (BuildConfig.DEBUG) {
             val loggerInterceptor = HttpLoggingInterceptor { Timber.tag("OkHttp").d(it) }
                     .apply { level = HttpLoggingInterceptor.Level.BASIC }
@@ -55,7 +55,6 @@ class RemoteModule {
                     .readTimeout(30, TimeUnit.SECONDS)
                     .writeTimeout(30, TimeUnit.SECONDS)
                     .addInterceptor(interceptor)
-                    .authenticator(authenticator)
                     .addNetworkInterceptor(StethoInterceptor())
                     .addNetworkInterceptor(loggerInterceptor)
                     .build()

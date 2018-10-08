@@ -15,8 +15,15 @@ import timber.log.Timber
  */
 class AirbankApplication : DaggerApplication() {
 
+    companion object {
+        lateinit var instance: AirbankApplication
+            private set
+    }
+
     override fun onCreate() {
         super.onCreate()
+
+        instance = this
 
         if (BuildConfig.DEBUG)
             Timber.plant(Timber.DebugTree());

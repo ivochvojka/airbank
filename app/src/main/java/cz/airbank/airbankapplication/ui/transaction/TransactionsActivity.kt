@@ -15,7 +15,7 @@ class TransactionsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTitle(R.string.transactions_title);
+        setupActionBar(R.string.transactions_title, false)
         setupFragment(TransactionsFragment())
     }
 }

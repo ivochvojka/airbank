@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.transaction.TransactionsActivity"
+    >
+
+    <data>
+
+        <import type="java.lang.Long"/>
+
+        <variable
+            name="data"
+            type="cz.airbank.airbankapplication.model.Transaction"/>
+
+        <variable
+            name="viewModel"
+            type="cz.airbank.airbankapplication.arch.viewmodel.TransactionsViewModel"/>
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="@{(view) -> viewModel.onTransactionClick(data)}"
+        app:cardCornerRadius="@dimen/space_xsmall"
+        app:cardElevation="@dimen/space_xsmall">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/space_xsmall">
+
+            <!-- DIRECTION -->
+            <ImageView
+                android:id="@+id/img_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space_small"
+                android:background="@drawable/shape_direction"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:direction="@{data.direction}"
+                tools:src="@drawable/ic_arrow_incomming"/>
+
+            <!-- TRANSACTION VALUES -->
+            <include
+                android:id="@+id/layout_transaction"
+                layout="@layout/layout_transaction"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_arrow"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/space_small"
+                app:transaction="@{data}"/>
+
+            <!-- NEXT BUTTON -->
+            <ImageView
+                android:id="@+id/img_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space_small"
+                android:src="@drawable/ic_arrow_next"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>

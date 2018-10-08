@@ -5,3 +5,4 @@
 - add Espresso tests
 - add Crashlytics, maybe some Analytics and another tools...
 - different view in landscape mode
+- add code style plugin
