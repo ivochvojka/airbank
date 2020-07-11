@@ -1,6 +1,7 @@
 # Test project for Airbank
 
 ### TODO
+- refactor to multimodule
 - replace RX with coroutines
 - signing config for release version
 - use DB for offline mode (e.g. Room)
